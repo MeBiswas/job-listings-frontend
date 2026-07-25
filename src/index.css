@@ -1,0 +1,61 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply bg-paper text-ink dark:bg-paper-dark dark:text-ink-dark transition-colors duration-200;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Visible keyboard focus everywhere - accessibility baseline, never suppressed. */
+  :focus-visible {
+    outline: 2px solid theme('colors.navy.DEFAULT');
+    outline-offset: 2px;
+  }
+  .dark :focus-visible {
+    outline-color: theme('colors.amber.DEFAULT');
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  .skill-tag {
+    @apply font-mono text-[10px] px-2 py-0.5 bg-paper dark:bg-paper-dark border border-line dark:border-line-dark rounded text-ink-soft dark:text-ink-dark-soft;
+  }
+
+  .filter-label {
+    @apply block text-[10px] tracking-wider uppercase text-ink-soft dark:text-ink-dark-soft mb-1.5;
+  }
+
+  .filter-input {
+    @apply w-full px-2.5 py-2 border border-line dark:border-line-dark rounded bg-paper dark:bg-paper-dark font-mono text-[13px] text-ink dark:text-ink-dark focus:outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-navy dark:focus-visible:outline-amber;
+  }
+
+  .sr-only {
+    @apply absolute w-px h-px p-0 -m-px overflow-hidden whitespace-nowrap border-0;
+    clip: rect(0, 0, 0, 0);
+  }
+
+  .panel {
+    @apply bg-panel dark:bg-panel-dark border border-line dark:border-line-dark rounded;
+  }
+
+  .field {
+    @apply min-w-0;
+  }
+}
